@@ -32,7 +32,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.12 }
 );
 reveals.forEach(el => observer.observe(el));
 
@@ -42,15 +42,15 @@ if (whaleContainer) {
   function spawnBubble() {
     const b = document.createElement('div');
     b.classList.add('bubble-particle');
-    const size = 6 + Math.random() * 14;
+    const size = 4 + Math.random() * 10;
     b.style.width = size + 'px';
     b.style.height = size + 'px';
-    b.style.left = 20 + Math.random() * 60 + '%';
-    b.style.bottom = '10%';
-    b.style.animationDuration = 3 + Math.random() * 4 + 's';
+    b.style.left = 25 + Math.random() * 50 + '%';
+    b.style.bottom = 15 + Math.random() * 20 + '%';
+    b.style.animationDuration = 4 + Math.random() * 4 + 's';
     whaleContainer.appendChild(b);
-    setTimeout(() => b.remove(), 7000);
+    setTimeout(() => b.remove(), 8000);
   }
 
-  setInterval(spawnBubble, 600);
+  setInterval(spawnBubble, 900);
 }
