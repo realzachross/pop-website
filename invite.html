@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're invited to POP</title>
+
+  <!-- OG tags for iMessage / social link previews -->
+  <meta property="og:title" content="You're invited to POP">
+  <meta property="og:description" content="Tap to join me on POP — the location-based social app.">
+  <meta property="og:image" content="https://realzachross.github.io/pop-website/assets/whale_logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="You're invited to POP">
+  <meta name="twitter:description" content="Tap to join me on POP — the location-based social app.">
+  <meta name="twitter:image" content="https://realzachross.github.io/pop-website/assets/whale_logo.png">
+
+  <link rel="icon" href="assets/whale_logo.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      color: #ebebeb;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+    }
+    .invite {
+      text-align: center;
+      padding: 2rem;
+    }
+    .invite img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .invite h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #5CC5B5;
+    }
+    .invite p {
+      color: #999;
+      font-size: 0.95rem;
+    }
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(92,197,181,0.3);
+      border-top-color: #5CC5B5;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="invite">
+    <img src="assets/whale_logo.png" alt="POP">
+    <h1>You're invited to POP</h1>
+    <p><span class="spinner"></span>Taking you to POP...</p>
+  </div>
+
+  <script>
+    (function () {
+      var EDGE_FN = 'https://jrfkhwwobyfvszmazmwl.supabase.co/functions/v1/invite-redirect';
+      var TESTFLIGHT = 'https://testflight.apple.com/join/dQnTaU2c';
+
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get('code');
+
+      if (code) {
+        window.location.replace(EDGE_FN + '?code=' + encodeURIComponent(code));
+      } else {
+        window.location.replace(TESTFLIGHT);
+      }
+    })();
+  </script>
+</body>
+</html>
