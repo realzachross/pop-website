@@ -84,7 +84,16 @@
       var code = params.get('code');
 
       if (code) {
-        window.location.replace(EDGE_FN + '?code=' + encodeURIComponent(code));
+        // Fetch edge function in background (click tracking + destination lookup)
+        // then redirect client-side so the Supabase URL never shows in the address bar
+        fetch(EDGE_FN + '?code=' + encodeURIComponent(code) + '&json=1')
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            window.location.replace(data.destination || TESTFLIGHT);
+          })
+          .catch(function () {
+            window.location.replace(TESTFLIGHT);
+          });
       } else {
         window.location.replace(TESTFLIGHT);
       }
