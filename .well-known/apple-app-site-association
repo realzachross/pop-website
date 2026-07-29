@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "ZF4U2WHABX.com.zach.popapp",
+        "paths": [ "/add/*", "/add" ]
+      }
+    ]
+  }
+}

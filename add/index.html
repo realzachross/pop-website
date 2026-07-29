@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add me on POP</title>
+
+  <!-- OG tags for iMessage / social link previews -->
+  <meta property="og:title" content="Add me on POP">
+  <meta property="og:description" content="Tap to add me as a friend on POP — the location-based social app.">
+  <meta property="og:image" content="https://popexplore.com/assets/whale_logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Add me on POP">
+  <meta name="twitter:description" content="Tap to add me as a friend on POP.">
+  <meta name="twitter:image" content="https://popexplore.com/assets/whale_logo.png">
+
+  <link rel="icon" href="../assets/whale_logo.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      color: #ebebeb;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      padding: 2rem;
+    }
+    .card { text-align: center; max-width: 340px; }
+    .card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .card h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #5CC5B5;
+    }
+    .card p { color: #999; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .cta {
+      display: inline-block;
+      background: #5CC5B5;
+      color: #06231f;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+    }
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(92,197,181,0.3);
+      border-top-color: #5CC5B5;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="../assets/whale_logo.png" alt="POP">
+    <h1>Add me on POP</h1>
+    <p><span class="spinner"></span>Getting the app…</p>
+    <a class="cta" id="getApp" href="#">Get POP</a>
+  </div>
+
+  <script>
+    (function () {
+      // Where non-app users go. TestFlight for now; swap for the App Store URL
+      // at public launch. If the app IS installed, iOS opens it via the
+      // Universal Link (applinks:popexplore.com) and this page never loads.
+      var STORE = 'https://testflight.apple.com/join/dQnTaU2c';
+
+      document.getElementById('getApp').setAttribute('href', STORE);
+
+      // Give the OS a beat to intercept via Universal Link, then fall through
+      // to the store for anyone without the app.
+      setTimeout(function () { window.location.replace(STORE); }, 1200);
+    })();
+  </script>
+</body>
+</html>
