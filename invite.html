@@ -78,7 +78,7 @@
   <script>
     (function () {
       var EDGE_FN = 'https://jrfkhwwobyfvszmazmwl.supabase.co/functions/v1/invite-redirect';
-      var TESTFLIGHT = 'https://testflight.apple.com/join/dQnTaU2c';
+      var APP_STORE = 'https://apps.apple.com/app/id6757016070';
 
       var params = new URLSearchParams(window.location.search);
       var code = params.get('code');
@@ -89,13 +89,13 @@
         fetch(EDGE_FN + '?code=' + encodeURIComponent(code) + '&json=1')
           .then(function (res) { return res.json(); })
           .then(function (data) {
-            window.location.replace(data.destination || TESTFLIGHT);
+            window.location.replace(data.destination || APP_STORE);
           })
           .catch(function () {
-            window.location.replace(TESTFLIGHT);
+            window.location.replace(APP_STORE);
           });
       } else {
-        window.location.replace(TESTFLIGHT);
+        window.location.replace(APP_STORE);
       }
     })();
   </script>

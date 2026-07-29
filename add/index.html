@@ -82,10 +82,10 @@
 
   <script>
     (function () {
-      // Where non-app users go. TestFlight for now; swap for the App Store URL
-      // at public launch. If the app IS installed, iOS opens it via the
+      // Where non-app users go. If the app IS installed, iOS opens it via the
       // Universal Link (applinks:popexplore.com) and this page never loads.
-      var STORE = 'https://testflight.apple.com/join/dQnTaU2c';
+      // Region-agnostic App Store link auto-localizes to the visitor's store.
+      var STORE = 'https://apps.apple.com/app/id6757016070';
 
       document.getElementById('getApp').setAttribute('href', STORE);
 
